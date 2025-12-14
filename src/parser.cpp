@@ -44,8 +44,10 @@ int main(int argc, char* argv[]) {
             output += "std::cout << " + content + " << std::endl;\n";
         } else if (line.substr(0, 4) == "var ") {
             size_t start = line.find(' ') + 1;
-            std::string content = line.substr(start); // take everything after "var "
+            std::string content = line.substr(start);
             output += "auto " + content + ";\n";
+        } else {
+            output += line + ";\n";
         }
     }
 
@@ -58,8 +60,6 @@ int main(int argc, char* argv[]) {
     }
 
     transpile << output;
-
-    // std::system("clang++ transpile.cpp -o app.exe"); // placeholder, not for release
 
     return 0;
 }
