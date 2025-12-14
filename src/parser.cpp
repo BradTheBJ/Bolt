@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 
-
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cerr << "No input file provided\n";
@@ -43,6 +42,10 @@ int main(int argc, char* argv[]) {
             std::string content = line.substr(start, end - start);
 
             output += "std::cout << " + content + " << std::endl;\n";
+        } else if (line.substr(0, 4) == "var ") {
+            size_t start = line.find(' ') + 1;
+            std::string content = line.substr(start); // take everything after "var "
+            output += "auto " + content + ";\n";
         }
     }
 
@@ -55,8 +58,8 @@ int main(int argc, char* argv[]) {
     }
 
     transpile << output;
-    //std::system("clang++ transpile.cpp -o app.exe"); // THIS IS ONLY A PLACEHOLDER IN NO WAY SHAPE OR FORM SHOULD THIS BE IN A RELEASE
-    
+
+    // std::system("clang++ transpile.cpp -o app.exe"); // placeholder, not for release
+
     return 0;
 }
-

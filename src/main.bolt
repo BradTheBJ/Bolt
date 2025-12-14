@@ -1,3 +1,5 @@
 entry
 print("Hello, World")
+var x = 5
+print(x)
 exit
