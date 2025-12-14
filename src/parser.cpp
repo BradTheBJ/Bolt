@@ -31,9 +31,9 @@ int main(int argc, char* argv[]) {
     std::string output;
 
     while (std::getline(file, line)) {
-        if (line == "entry;") {
+        if (line == "entry") {
             output += "int main() {\n\n";
-        } else if (line == "exit;") {
+        } else if (line == "exit") {
             output += "}\n\n";
         } else if (line.substr(0, 6) == "print(") {
             lib = import_libs::iostream;
