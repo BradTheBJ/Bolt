@@ -6,4 +6,5 @@ var y = 0
 y = x + 5
 print(y)
 std::cout << "C++ superset test!" << std::endl;
+let foo = 42
 exit
