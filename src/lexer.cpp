@@ -1,4 +1,4 @@
-#include "lexer.h"
+#include "bolt/lexer.h"
 #include <fstream>
 #include <cctype>
 #include <iostream>
@@ -50,6 +50,8 @@ std::vector<Token> lexFile(const std::string &filename) {
                 case '/': tokens.push_back({Tok_Div, "/"}); break;
                 case '=': tokens.push_back({Tok_Eql, "="}); break;
                 case ';': tokens.push_back({Tok_EOF, ";"}); break;
+                case '(': tokens.push_back({Tok_LParen, "("}); break;
+                case ')': tokens.push_back({Tok_RParen, ")"}); break;
                 default:
                     tokens.push_back({Tok_Unknown, std::string(1,*p)});
                     break;
@@ -57,8 +59,6 @@ std::vector<Token> lexFile(const std::string &filename) {
             p++;
         }
     }
-
-    tokens.push_back({Tok_EOF, ""});
     return tokens;
 }
 
